@@ -18,5 +18,5 @@ impostos_gerais = {
     "estadual": 0.005,
     "nacional": 0.001
 }
-calc_imposto(100, 0.03, **impostos_gerais)
-calc_imposto(100, 0.03, municipio=0.01, estadual=0.005, nacional=0.001)
+calc_imposto(100, 0.03, **impostos_gerais, internacional=0.00001)
+#calc_imposto(100, 0.03, municipio=0.01, estadual=0.005, nacional=0.001)
