@@ -6,7 +6,9 @@
 
 import requests # para realizar requisição na web
 import json # para tratar json de listas/dicionários para arquivos json
+from tqdm import tqdm # fornece barras de progresso rápidas, acompanha o andamento de tarefas demoradas.
 
+import pandas as pd
 
 # %%
 
@@ -31,6 +33,7 @@ ceps = [
 # %%
 
 # Criamos uma url base que vai navegar no cep
+# Api via cep
 
 url = "https://viacep.com.br/ws/{cep}/json/" # {cep} chamado de please rhoades no python - parametrizar
 
@@ -41,7 +44,7 @@ dados = []
 
 # Navegando em todos os ceps
 
-for i in ceps:
+for i in tqdm(ceps):
 
  # Obtendo a resposta da request usando do get
     # url.format(cep=i) - estou pegando o valor do cep
@@ -54,6 +57,11 @@ for i in ceps:
 
 dados
 
+# %%
+
+dataset = pd.DataFrame(dados)
+dataset.to_csv("ceps.csv", sep=";")
+               
 # %%
 
 print(dados)
